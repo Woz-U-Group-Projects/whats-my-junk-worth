@@ -2,14 +2,46 @@ import React from 'react';
 import { render } from 'react-dom';
 import * as Redux from 'redux';
 import { BrowserRouter as Router, Route } from "react-router-dom";
-import { Home } from "./screens";
+import { Provider } from "react-redux";
+import { Home, Landingpage} from "./screens";
+import "./styles/app.css"
+
+
+var Barcode = require('react-barcode');
+
+const initialState = {
+	count: 0
+}
+
+const reducer = (state = initialState, action) => {
+  switch (action.type) {
+    case 'INCREMENT':
+      return {...state, count: state.count + 1};
+		case 'INCREMENT5':
+			return {...state, count: state.count + 5};
+			case 'INCREMENT10':
+				return {...state, count: state.count + 10};
+    case 'DECREMENT':
+			return {...state, count: state.count - 1};
+    case 'RESET':
+			return {...state, count: state.count = 0};
+		default:
+			return state;
+  }
+}
+
+const {createStore} = Redux;
+const store = createStore(reducer);
 
 const Index = () => (
+  <Provider store={store}>
     <Router>
       <div>
         <Route path="/" exact={true} component={Home} />
-      </div>
+        <Route path="/landingpage" component={Landingpage} />
+        </div>
     </Router>
+  </Provider>
 );
 
 render(<Index />, document.getElementById('root'));

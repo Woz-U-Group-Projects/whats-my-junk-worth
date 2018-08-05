@@ -5,46 +5,20 @@
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" 
         integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" 
         crossorigin="anonymous">
-                <link href='http://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
-                <link href='http://fonts.googleapis.com/css?family=Just+Another+Hand' rel='stylesheet' type='text/css'>
-        
-                <style>
-                    #appTitle  {
-                        padding-top: 50px;
-                        padding-bottom: 50px;
-                        font: 400 50px/1.5 'Pacifico', Helvetica, sans-serif;
-                        color: #2b2b2b;
-                        text-shadow: 3px 3px 0px rgba(0,0,0,0.1), 7px 7px 0px rgba(0,0,0,0.05);
-                    }
-                    .body_background {
-                        background-color: #28a74547;
-                    }
-                    .center_button {
-                        visibility: hidden;
-                        display: flex;
-                        justify-content: center;
-                        align-items: center;
-                    }
-                    .btn {
-                        border: 2px solid #0099CC;
-                        border-radius: 6px; 
-                        width: 200px;
-                        height: 100px;
-                        font-size: 45px;
-                    }
-                </style>
+        <link href='http://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+        <link href='http://fonts.googleapis.com/css?family=Just+Another+Hand' rel='stylesheet' type='text/css'>
     </head>
     <body class="body_background">
-        <div id="start_invisible" style="visibility: hidden">
+        <div id="intro_page" style="visibility: hidden">
             <div id="root"></div>
-            <div class="row" style="background-color: hsl(0, 3%, 94%);">
+            <div class="row" id="appTitleDiv">
                 <div class="col-sm-12 text-center" style="background-color: #ffc1073b">
                     <h1 style="font-size:8vw;">
                         <label id="appTitle"></label>
                     </h1>
                 </div>
             </div>
-            <div class="row" style="background-color: #28a74547;">
+            <div class="row" id="appDescriptionDiv">
                 <div class="col-sm-12 text-justify" style="padding: 50px;">
                     <h2 style="font-size:6vw;">
                         <label id="appDescription"></label>
@@ -53,7 +27,15 @@
             </div>
             <div class="row">
                 <div class="col-sm-12 center_button" style="padding: 50px;">
-                    <Button class="btn btn-primary btn-sm" id="btnStart">Lets Go!</Button>
+                    <a href="/landingpage"><Button class="btn btn-primary" id="btnStart">Lets Go!</Button></a>
+                </div>
+            </div>            
+            <div class="row" id="showLandingpageButtons">
+                <div class="col-sm-6 center_button" style="padding: 50px;">
+                    <a href="/newscan"><Button class="btnScan btn-primary" id="btnNewScan">New Scan</Button></a>
+                </div>
+                <div class="col-sm-6 center_button" style="padding: 50px;">
+                    <a href="/landingpage"><Button class="btnScan btn-primary" id="btnOldScan">Old Scans</Button></a>
                 </div>
             </div>
         </div>
@@ -69,5 +51,6 @@
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" 
         integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" 
         crossorigin="anonymous"></script>
+
     </body>
 </html>

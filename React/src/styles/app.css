@@ -1,0 +1,42 @@
+             #appTitle  {
+                padding-top: 50px;
+                padding-bottom: 50px;
+                font: 400 50px/1.5 'Pacifico', Helvetica, sans-serif;
+                color: #2b2b2b;
+                text-shadow: 3px 3px 0px rgba(0,0,0,0.1), 7px 7px 0px rgba(0,0,0,0.05);
+            }
+            #appTitleDiv {
+                background-color: hsl(0, 3%, 94%);
+            }
+            #appDescriptionDiv {
+                background-color: #28a74547;
+            }
+            .body_background {
+                background-color: #28a74547;
+            }
+            .center_button {
+                visibility: hidden;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+            .btn {
+                border: 2px solid #0099CC;
+                border-radius: 6px; 
+                width: 200px;
+                height: 100px;
+                font-size: 45px;
+            }
+            .btnScan {
+                border: 2px solid #0099CC;
+                border-radius: 6px; 
+                width: 300px;
+                height: 100px;
+                font-size: 45px;
+            }
+        /* In order to place the tracking correctly */
+            canvas.drawing, canvas.drawingBuffer {
+                position: absolute;
+                left: 0;
+                top: 0;
+            }
