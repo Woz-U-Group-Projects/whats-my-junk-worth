@@ -1,5 +1,4 @@
 import React from 'react';
-import Header from '../components/Header';
 
 //think of react components as functions
 class Search extends React.Component {
@@ -25,7 +24,6 @@ class Search extends React.Component {
             //define the url of the WebAPI that will be called to return data
             let url = "http://ec2-54-70-8-113.us-west-2.compute.amazonaws.com/api/homepage";
             const options = { method: 'GET' };
-
             //call the WebAPI.  This should return 2 pieces of data
             fetch(url, options)
             .then(function(response) {

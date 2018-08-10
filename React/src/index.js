@@ -3,11 +3,8 @@ import { render } from 'react-dom';
 import * as Redux from 'redux';
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import { Provider } from "react-redux";
-import { Home, Landingpage} from "./screens";
+import { Home, Landingpage, Newscan } from "./screens";
 import "./styles/app.css"
-
-
-var Barcode = require('react-barcode');
 
 const initialState = {
 	count: 0
@@ -39,6 +36,7 @@ const Index = () => (
       <div>
         <Route path="/" exact={true} component={Home} />
         <Route path="/landingpage" component={Landingpage} />
+        <Route path="/newscan" component={Newscan} />
         </div>
     </Router>
   </Provider>
