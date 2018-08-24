@@ -3,7 +3,7 @@ import { render } from 'react-dom';
 import * as Redux from 'redux';
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import { Provider } from "react-redux";
-import { Home, Landingpage, Newscan } from "./screens";
+import { Home, Landingpage, Newscan, Oldscan, Lookupbarcode, Saveproduct, Ebaylookup } from "./screens";
 import "./styles/app.css"
 
 const initialState = {
@@ -37,6 +37,10 @@ const Index = () => (
         <Route path="/" exact={true} component={Home} />
         <Route path="/landingpage" component={Landingpage} />
         <Route path="/newscan" component={Newscan} />
+        <Route path="/oldscan" component={Oldscan} />
+        <Route path="/lookupbarcode" component={Lookupbarcode} />
+        <Route path="/ebaylookup" component={Ebaylookup} />
+        <Route path="/saveproduct" component={Saveproduct} />
         </div>
     </Router>
   </Provider>

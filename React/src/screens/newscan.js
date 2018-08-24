@@ -1,26 +1,36 @@
 import React from 'react';
+import '../styles/app.css';
+
 
 class Newscan extends React.Component {
 
-    
+    scannerStartStop(){
+        if (_scannerIsRunning) {
+            _scannerIsRunning = false;
+            document.getElementById("btn").innerHTML= "Start the scanner";   
+            document.getElementById("scanner-container").style.visibility = "hidden";
+            Quagga.stop();
+        } else {
+            document.getElementById("btn").innerHTML= "Stop the scanner"              
+            document.getElementById("scanner-container").style.visibility = "visible";
+            startScanner();
+        }
+    }
+
+
+
     render() {
-
-        document.getElementById("intro_page").style.visibility = "visible";
-        document.getElementById("btnStart").style.visibility = "hidden";
-        document.getElementById("appTitleDiv").style.visibility = "hidden";
-        document.getElementById("appDescriptionDiv").style.visibility = "hidden";    
-        document.getElementById("btnNewScan").style.visibility = "hidden";
-        document.getElementById("btnOldScan").style.visibility = "hidden";
-        document.getElementById("scanner-container").style.visibility = "visible";
-        document.getElementById('showScanner').style.visibility = "visible";
-         
-        var thisIsMyCopy = (
-            <p></p>
-        );
-
+        var divStyle = {
+            height: '400px'
+        }
         return (
             <div>
-                <h1>{thisIsMyCopy}</h1>
+                <div id="scanner-container" class="scanbox" style={divStyle}></div>
+                <div>
+                    <button className="btnStartScan" id="btn" onClick={this.scannerStartStop}>
+                        Start Scanner
+                    </button>
+                </div>
             </div>
         );
     }

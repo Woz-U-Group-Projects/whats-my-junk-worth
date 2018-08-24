@@ -1,9 +1,18 @@
-             #appTitle  {
+             .appTitle  {
                 padding-top: 50px;
                 padding-bottom: 50px;
-                font: 400 50px/1.5 'Pacifico', Helvetica, sans-serif;
+                padding-left: 0px;
+                font: 25px 'Pacifico', Helvetica, sans-serif;
                 color: #2b2b2b;
                 text-shadow: 3px 3px 0px rgba(0,0,0,0.1), 7px 7px 0px rgba(0,0,0,0.05);
+            }
+            .appDescription  {
+                padding-top: 50px;
+                padding-bottom: 50px;
+                padding-left: 25px;
+                padding-right: 50px;
+                font: 18px 'Ariel',  Helvetica, sans-serif;
+                color: #2b2b2b;
             }
             #appTitleDiv {
                 background-color: hsl(0, 3%, 94%);
@@ -20,12 +29,10 @@
                 justify-content: center;
                 align-items: center;
             }
-            .btn {
-                border: 2px solid #0099CC;
-                border-radius: 6px; 
-                width: 200px;
-                height: 100px;
-                font-size: 45px;
+            .center_text {
+                display: flex;
+                justify-content: center;
+                align-items: center;
             }
             .btnScan {
                 border: 2px solid #0099CC;
@@ -35,14 +42,15 @@
                 font-size: 45px;
             }
             .btnStartScan {
+                color: #2b2b2b;
                 background-color: #0099CC;
                 border: 2px solid #0099CC;
                 border-radius: 6px; 
-                width: 500px;
-                height: 100px;
-                font-size: 45px;
+                width: 300px;
+                height: 40px;
+                font-size: 35px;
                 align-items: center;
-                margin:40px auto;
+                margin:10px auto;
                 display: flex;
                 flex-direction: column;
                 justify-content: center;
@@ -53,14 +61,68 @@
                 position: absolute;
                 left: 0;
                 top: 0;
-              }
+            }
+            .errorDiv {
+                position: absolute;
+                left: 100;
+                top: 50;
+                width: 100;
+            }
+            #showProductDiv {
+                position: absolute;
+                left: 0;
+                top: 0;             
+            }
+            .productFont {
+                font: 'Ariel',  Helvetica, sans-serif;
+                font-size: 36px;
+            }
+            .oldscanFont {
+                font: 'Ariel',  Helvetica, sans-serif;
+                font-size: 24px;
+            }
+            #errorFont {
+                font: 'Ariel',  Helvetica, sans-serif;
+                font-size: 18px;
+                color: red;
+            }
             .movetotop {
                 position: absolute;
                 top: 400px;
             }
+            input[type=checkbox] {
+                /* Double-sized Checkboxes */
+                -ms-transform: scale(2); /* IE */
+                -moz-transform: scale(2); /* FF */
+                -webkit-transform: scale(2); /* Safari and Chrome */
+                -o-transform: scale(2); /* Opera */
+                padding: 10px;
+            }
+
+            /* Might want to wrap a span around your checkbox text */
+            .checkboxtext {
+                /* Checkbox text */
+                font: 'Ariel',  Helvetica, sans-serif;
+                font-size: 36px;
+                display: inline;
+            }
+
         /* In order to place the tracking correctly */
             canvas.drawing, canvas.drawingBuffer {
                 position: absolute;
                 left: 0;
                 top: 0;
+            }
+            .fullCenter{
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+            .horizontalCenter{
+                display: flex;
+                align-items: center;
+            }
+            .resize {
+                width:75px; /* you can use % */
+                height: auto;
             }

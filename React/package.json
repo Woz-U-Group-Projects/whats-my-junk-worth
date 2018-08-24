@@ -21,6 +21,8 @@
     "webpack-dev-server": "^2.4.5"
   },
   "dependencies": {
+    "cors": "^2.8.4",
+    "ebay-node-api": "^2.2.1",
     "moment": "^2.20.1",
     "moment-timezone": "^0.5.14",
     "react": "^15.6.1",
@@ -30,7 +32,8 @@
     "react-redux": "^5.0.5",
     "react-router-dom": "^4.1.1",
     "redux": "^3.7.0",
-    "reselect": "^3.0.1"
+    "reselect": "^3.0.1",
+    "simple-flexbox": "^1.2.0"
   },
   "babel": {
     "presets": [

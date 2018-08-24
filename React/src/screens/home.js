@@ -1,83 +1,83 @@
 import React from 'react';
+import '../styles/app.css';
 
 //think of react components as functions
-class Search extends React.Component {
+class Home extends React.Component {
     
     constructor(props) {
-        super(props)
-    }  
-
-    appFields = {
-        appTitle_literal: "",
-        appDescription_literal: ""
+        super(props);
+        this.state = {
+            date: new Date(),
+            title: 'title',
+            description: 'description'
+        };
     }
-        searchJRS = (props) => {
+    componentDidMount() {
+        let currentComponent = this;
 
-            //initalize these fields
-            props.appTitle_literal = "";
-            props.appDescription_literal = "Please be patient while we set up your app"
-
-            function valuesToArray(obj) {
-                return Object.keys(obj).map(function (key) { return obj[key]; });
-            }
+        function valuesToArray(obj) {
+            return Object.keys(obj).map(function (key) { return obj[key]; });
+        }
     
-            //define the url of the WebAPI that will be called to return data
-            let url = "http://ec2-54-70-8-113.us-west-2.compute.amazonaws.com/api/homepage";
-            const options = { method: 'GET' };
-            //call the WebAPI.  This should return 2 pieces of data
-            fetch(url, options)
-            .then(function(response) {
-                return response.json();
-            })
-            .then(function(myJson) {
-                setTimeout(function(){ 
-                if (myJson == undefined) 
-                {
-                    console.log("fetch failed")
-                } 
-                else 
-                {
-                    //inspect the data that the WebAPI returned
-                    var newArray = [];
-                    newArray = valuesToArray(myJson);  
-                    props.appTitle_literal = newArray[0].product_title
-                    props.appDescription_literal = newArray[0].product_description; 
-                    //since the homepage has been rendered, find the DOM element
-                    //that will display the application title and set it equal to
-                    //the title that was returned by the Web API
-                    document.getElementById("appTitle").innerHTML = props.appTitle_literal;
-                    //since the homepage has been rendered, find the DOM element
-                    //that will display the application description and set it 
-                    //equal to the description that was returned by the Web API
-                    document.getElementById("appDescription").innerHTML = props.appDescription_literal;
-                    document.getElementById("root").innerHTML = "";
-                    //since the homepage has been rendered, find the DOM element
-                    //that will be in change of the viewable data and change the 
-                    //visibility of those elements to visible.  The initial view of
-                    //the page has these elements visibility: hidden so a clean
-                    //background is shown when the page first loads and is waiting 
-                    //for the data from the Web API to be retrieved
-                    document.getElementById("btnStart").style.visibility = "visible";
-                    document.getElementById("intro_page").style.visibility = "visible";
-                }
-                }, 3000);
-            });
-        }   
+        //populate the state in case the fetch failes for some reason
+        let defaultTitle = "Default Title";
+        let defaultDescription = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit.";
         
-        render() {
-            this.searchJRS(this.appFields);
-            return (
-             //   <Header title={this.appFields.appTitle_literal} description={this.appFields.appDescription_literal} />
+        this.setState({ title: defaultTitle });
+        this.setState({ description: defaultDescription });
 
-                        <button     
-                        type='button'     
-                        onClick={() => { 
-                            history.push('/new-location') 
-                        }}>
-                        Click Me! 
-                        </button>
-        );
+        //Make use of the API not the web service.  This should return 2 pieces of data
+        let url = "http://wmjwwebapi-dev.us-west-2.elasticbeanstalk.com/api/homepage";
+        const options = { method: 'GET' };
+
+        fetch(url, options)
+        .then(function(response) {
+            return response.json();
+        })
+        .then(function(myJson) {
+            if (myJson == undefined) 
+            {
+                console.log("fetch failed");
+            } 
+            else 
+            {
+                //inspect the data that the WebAPI returned
+                var newArray = [];
+                newArray = valuesToArray(myJson);  
+                
+                currentComponent.setState({ title: newArray[0].product_title });
+                currentComponent.setState({ description: newArray[0].product_description });
+            }
+        });   
     }
+ 
+    render() {
+
+            return (              
+                <div>
+                    <div className="row">
+                        <div className="col-sm-12 center_text">
+                            <div className="appTitle">
+                                {this.state.title}
+                            </div>
+                        </div>
+                    </div>
+                    <div className="appDescription">
+                        {this.state.description}
+                    </div>
+                    <div>
+                        <button className="btnStartScan"
+                            type='button'     
+                            onClick={() => { 
+                                location.href = ('/landingpage') 
+                            }}>
+                            Let's Go!
+                        </button>
+                    </div>
+                </div>
+
+            );
+        }
 }
         
-export default Search
+export default Home

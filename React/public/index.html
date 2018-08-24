@@ -1,71 +1,32 @@
 <!doctype html>
 <html>
     <head>
-        <title></title>
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" 
-        integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" 
-        crossorigin="anonymous">
+        <title>Whats my junk worth</title>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
         <link href='http://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
         <link href='http://fonts.googleapis.com/css?family=Just+Another+Hand' rel='stylesheet' type='text/css'>
     </head>
     <body class="body_background">
-        <div id="intro_page" style="visibility: hidden">
-            <div id="root"></div>
-            <div class="row" id="appTitleDiv">
-                <div class="col-sm-12 text-center" style="background-color: #ffc1073b">
-                    <h1 style="font-size:8vw;">
-                        <label id="appTitle"></label>
-                    </h1>
-                </div>
-            </div>
-            <div class="row" id="appDescriptionDiv">
-                <div class="col-sm-12 text-justify" style="padding: 50px;">
-                    <h2 style="font-size:6vw;">
-                        <label id="appDescription"></label>
-                    </h2>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-sm-12 center_button" style="padding: 50px;">
-                    <a href="/landingpage"><Button class="btn btn-primary" id="btnStart">Lets Go!</Button></a>
-                </div>
-            </div>            
-            <div class="row" id="showLandingpageButtons">
-                <div class="col-sm-6 center_button" style="padding: 50px;">
-                    <a href="/newscan"><Button class="btnScan btn-primary" id="btnNewScan">New Scan</Button></a>
-                </div>
-                <div class="col-sm-6 center_button" style="padding: 50px;">
-                    <a href="/landingpage"><Button class="btnScan btn-primary" id="btnOldScan">Old Scans</Button></a>
-                </div>
-            </div>
-            <div id="showScanner" style="visibility: hidden" >
-                <div id="scanner-container" class="scanbox"></div>
-                <div class="row movetotop">
-                    <div class="col-sm-1">&nbsp;</div>
-                    <div class="col-sm-10">
-                        <input type="button" id="btn" class="btnStartScan" value="Start the scanner" />
-                    </div>
-                    <div class="col-sm-1">&nbsp;</div>
-                </div>
-            </div>
-        </div>
+        <div id="root"></div>
         <script src="bundle.js"></script>
-        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" 
-        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" 
-        crossorigin="anonymous"></script>
-        
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" 
-        integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" 
-        crossorigin="anonymous"></script>
-        
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" 
-        integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" 
-        crossorigin="anonymous"></script>
+
+         <!-- Optional JavaScript -->
+        <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+
 
         <script src="quagga.js"></script>
-
         <script>
             var _scannerIsRunning = false;
+            function valuesToArray(obj) {
+                return Object.keys(obj).map(function (key) { return obj[key]; });
+            }
 
             function startScanner() {
                 Quagga.init({
@@ -148,21 +109,11 @@
                 Quagga.onDetected(function (result) {
                     console.log("Barcode detected and processed : [" + result.codeResult.code + "]", result);
                     Quagga.stop();
+                    const linkURL = "./lookupbarcode?" + result.codeResult.code;
+                    location.href = linkURL; 
                 });
             }
 
-        document.getElementById("btn").addEventListener("click", function () {
-            if (_scannerIsRunning) {
-                _scannerIsRunning = false;
-                document.getElementById("btn").value= "Start the scanner"
-                Quagga.stop();
-            } else {
-                document.getElementById("btn").value= "Stop the scanner"
-                startScanner();
-            }
-        }, false);
-
         </script>
-
     </body>
 </html>

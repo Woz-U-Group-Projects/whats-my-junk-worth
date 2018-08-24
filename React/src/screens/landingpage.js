@@ -4,25 +4,34 @@ class Landingpage extends React.Component {
 
     
     render() {
-
-        document.getElementById("intro_page").style.visibility = "visible";
-        document.getElementById("btnStart").style.visibility = "hidden";
-        document.getElementById("appTitleDiv").style.visibility = "hidden";
-        document.getElementById("appDescriptionDiv").style.visibility = "visible";
-        document.getElementById("appDescription").innerHTML = "Click the New Scan button to access your camera and scan the barcode of a product.  If you want to see products you have scanned in the past, click on the Old Scans button."
-
-        document.getElementById("btnNewScan").style.visibility = "visible";
-        document.getElementById("btnOldScan").style.visibility = "visible";
-
-        var thisIsMyCopy = (
-            <p></p>
-        );
-
         return (
             <div>
-                {thisIsMyCopy}
+                <div>
+                    <div id="appTitle">
+                        <center>&nbsp;</center>
+                    </div>
+                    <div id="appDescription">
+                        Click the New Scan button to access your camera and scan the barcode of a product.  If you want to see products you have scanned in the past, click on the Old Scans button.
+                    </div>
+                </div>
+                <div>
+                    <button className="btnStartScan"
+                        type='button'     
+                        onClick={() => { 
+                            location.href = ('/newscan') 
+                        }}>
+                        New Scan
+                    </button>
+                    <button className="btnStartScan"
+                        type='button'     
+                        onClick={() => { 
+                            location.href = ('/oldscan') 
+                        }}>
+                        Old Scans
+                    </button>
+                </div>
             </div>
-        );
+        )
     }
 }
 
